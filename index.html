@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="stylesheet" href="https://note.zshin.com/css/terminal.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@1.0.1/dist/css/mdui.min.css"/>
+    <title>ZShin Note</title>
+  </head>
+  <body>
+    <div class="mdui-container">
+    <div id="app">
+      <!-- if id empty -->
+      <div v-if="id ==''">
+        <h1>ZShin Note</h1>
+        <div class="mdui-textfield">
+          <label class="mdui-textfield-label">Title</label>
+          <input v-model="emptyTitle" class="mdui-textfield-input" type="text"/>
+        </div>
+        <button @click="createNewPage" class="mdui-btn mdui-btn-raised">Go</button>
+      </div>
+      <!-- if id not empty -->
+      <div v-if="id != ''">
+      <div style="height:40px">
+        <div class="mdui-row">
+          <div class="mdui-col-xs-10"><p style="font-weight:700;">{{ id }}</p></div>
+          <div class="mdui-col-xs-2" ><button v-if="diff" @click="sync" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">&#xe627;</i></button></div>
+        </div>
+        <div v-if="diff">
+          <div class="mdui-progress">
+            <div class="mdui-progress-indeterminate"></div>
+          </div>
+        </div>
+      </div>
+        <textarea v-model="textBox" id="terminal" rows="50" spellcheck="false"></textarea>
+        <p>{{ status }}</p>
+     </div>
+    </div>
+  </div>
+    <script src="https://note.zshin.com/script/terminal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://note.zshin.com/script/script.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js"></script>
+  </body>
+</html>
